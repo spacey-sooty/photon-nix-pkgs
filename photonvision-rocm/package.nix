@@ -29,13 +29,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "photonvision";
-  version = "";
+  version = "amd-od-hopefully";
 
   src =
     {
       "x86_64-linux" = fetchurl {
-        url = "https://github.com/spacey-sooty/photonvision/releases/download/v${version}/photonvision-v${version}-linuxx64.jar";
-        hash = "";
+        url = "https://github.com/spacey-sooty/photonvision/releases/download/${version}/photonvision-${version}-linuxx64.jar";
+        hash = "sha256-fba7c75cb93d8c5b6294305f4ad8f78282837b96442d122ad078b6adbc25f3fa";
       };
     }
     .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
