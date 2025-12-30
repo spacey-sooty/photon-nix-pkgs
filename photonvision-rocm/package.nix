@@ -12,7 +12,6 @@
   suitesparse,
   nixosTests,
 
-  onnxruntime,
   opencv4100,
 
   cmake,
@@ -23,7 +22,7 @@
 }:
 
 let
-  onnxruntime' = onnxruntime.override {
+  onnxruntime' = callPackage '../onnxruntime/package.nix' {
     rocmSupport = true;
   };
 in
@@ -35,7 +34,7 @@ stdenv.mkDerivation rec {
     {
       "x86_64-linux" = fetchurl {
         url = "https://github.com/spacey-sooty/photonvision/releases/download/${version}/photonvision-${version}-linuxx64.jar";
-        hash = "sha256-fba7c75cb93d8c5b6294305f4ad8f78282837b96442d122ad078b6adbc25f3fa";
+        hash = "sha256-eO1cjlxiebsM/15nlCAPEpqM7w1i0TON5ItNJmzB03M=";
       };
     }
     .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
